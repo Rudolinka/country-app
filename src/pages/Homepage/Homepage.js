@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Card from "../../components/Card";
+import styles from "./Homepage.module.css";
 
 const Homepage = () => {
   const [countries, setCountries] = useState([]);
@@ -18,9 +20,9 @@ const Homepage = () => {
     <div>
       <h1>All countries</h1>
 
-      <div>
+      <div className={styles.wrapper}>
         {countries.map((item) => (
-          <p>{item.name.official}</p>
+          <Card key={item.name.common} country={item} />
         ))}
       </div>
     </div>

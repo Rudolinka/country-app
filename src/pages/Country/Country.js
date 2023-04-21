@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Country = () => {
-  return <div>Countries</div>;
-};
+  const [current, setCurrent] = useState();
 
+  useEffect(() => {
+    getCountryByName();
+  }, []);
+
+  const getCountryByName = async () => {
+    const response = await fetch(`https://restcountries.com/v3.1/name/Poland`);
+    const data = await response.json();
+    setCurrent(data[0]);
+  };
+  console.log(current);
+  return <div>{current.name.official}</div>;
+};
 export default Country;
